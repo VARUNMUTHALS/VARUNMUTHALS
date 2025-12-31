@@ -1,372 +1,309 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --light-color: #f8f9fa;
-    --dark-color: #343a40;
-    --success-color: #28a745;
-    --danger-color: #dc3545;
-    --background-color: #e9ecef;
-    --font-family: 'Poppins', sans-serif;
-    --border-radius: 5px;
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --transition-speed: 0.3s;
+    --primary-color: #4a90e2;
+    --secondary-color: #50e3c2;
+    --accent-color: #ff5a5f;
+    --background-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --text-light: #777777;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 body {
-    font-family: var(--font-family);
-    margin: 0;
-    padding: 0;
+    font-family: 'Inter', sans-serif;
     background-color: var(--background-color);
-    color: var(--dark-color);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align to top to see scroll */
-    min-height: 100vh;
-    padding-top: 40px; /* Space from top */
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
 }
 
-.container {
-    background-color: var(--light-color);
-    padding: 30px;
+.hidden {
+    display: none !important;
+}
+
+/* Onboarding */
+#onboarding-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.onboarding-card {
+    background: var(--card-bg);
+    padding: 40px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     width: 100%;
-    max-width: 600px; /* Max width for the app */
-    margin: 20px;
-}
-
-h1 {
-    color: var(--primary-color);
+    max-width: 400px;
     text-align: center;
-    margin-bottom: 25px;
-    font-weight: 600;
 }
 
-.input-group {
-    display: flex;
+.form-group {
     margin-bottom: 20px;
-    gap: 10px; /* Add gap between input elements */
+    text-align: left;
 }
 
-#taskInput {
-    flex-grow: 1;
-    padding: 12px 15px;
-    border: 1px solid #ced4da;
-    border-radius: var(--border-radius) 0 0 var(--border-radius);
-    font-size: 1rem;
-    transition: border-color var(--transition-speed);
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
 }
 
-#dueDateInput {
-    padding: 12px 10px; /* Adjust padding */
-    border: 1px solid #ced4da;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    font-family: var(--font-family);
-    transition: border-color var(--transition-speed);
-    /* Consider a fixed width or make it responsive */
-    /* width: 150px; */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
 }
 
-#priorityInput {
-    padding: 12px 10px;
-    border: 1px solid #ced4da;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    font-family: var(--font-family);
-    background-color: white; /* Ensure background for select */
-    /* width: 120px; */ /* Optional fixed width */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-#dueDateInput:focus, #taskInput:focus, #priorityInput:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+.checkbox-group label {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-#addTaskBtn {
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.primary-btn {
     background-color: var(--primary-color);
     color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    cursor: pointer;
+    padding: 12px 24px;
+    width: 100%;
     font-size: 1rem;
-    font-weight: 500;
-    transition: background-color var(--transition-speed);
 }
 
-#addTaskBtn:hover {
-    background-color: #0056b3; /* Darker shade of primary */
+.primary-btn:hover {
+    background-color: #357abd;
 }
 
-#taskList {
-    list-style-type: none;
-    padding: 0;
+/* Dashboard */
+.dashboard-header {
+    margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
     margin: 0;
+    font-size: 2rem;
 }
 
-li {
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+/* Task Card */
+.task-card .input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#add-task-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+}
+
+#task-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.task-item {
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-left: 4px solid #ddd;
+}
+
+.task-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 0.8rem;
+}
+
+.badge {
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: white;
+}
+
+.badge-high { background-color: #e74c3c; }
+.badge-medium { background-color: #f39c12; }
+.badge-low { background-color: #2ecc71; }
+.badge-time { background-color: #95a5a6; }
+
+/* Mood Card */
+.mood-emojis {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 12px 15px;
-    border-bottom: 1px solid #eee;
-    background-color: #fff;
-    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+}
+
+.mood-btn {
+    background: none;
+    font-size: 2rem;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.mood-btn:hover {
+    transform: scale(1.2);
+}
+
+.suggestion-box, .response-box {
+    background: #eef2f5;
+    padding: 10px;
+    border-radius: 6px;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Learning Card */
+#learning-input {
+    resize: vertical;
+    min-height: 80px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: background-color var(--transition-speed), opacity var(--transition-speed), border-left-color var(--transition-speed);
-    opacity: 1; /* For fade-in/out */
-    border-left: 5px solid var(--secondary-color); /* Default border color */
 }
 
-/* Priority-specific border colors */
-li.priority-high {
-    border-left-color: var(--danger-color);
-}
-li.priority-medium {
-    border-left-color: #ffc107; /* Warning yellow/orange */
-}
-li.priority-low {
-    border-left-color: var(--success-color);
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: #004d40;
+    padding: 8px 16px;
+    width: 100%;
 }
 
-
-li.fade-out {
-    opacity: 0;
-}
-
-li:last-child {
-    border-bottom: none; /* Kept for consistency, but margin-bottom is primary separator */
-}
-
-.task-info { /* Container for text and due date */
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column; /* Stack text and due date */
-    margin-right: auto; /* Push controls to the right */
-}
-
-li span.task-text {
-    cursor: pointer; /* Indicate text is clickable for completion */
-    /* flex-grow: 1; removed as task-info handles growth */
-}
-
-li.completed span.task-text {
-    text-decoration: line-through;
-    color: var(--secondary-color);
-    transition: color var(--transition-speed), text-decoration var(--transition-speed);
-}
-
-.due-date {
-    font-size: 0.8rem;
-    color: var(--secondary-color);
-    margin-top: 4px;
-}
-
-li.overdue .due-date {
-    color: var(--danger-color);
-    font-weight: 500;
-}
-li.overdue {
-    border-left-color: var(--danger-color); /* Example: visual cue for overdue */
-}
-
-
-li.due-soon .due-date {
-    color: #fd7e14; /* Orange color for due soon */
-    font-weight: 500;
-}
-li.due-soon {
-     border-left-color: #fd7e14; /* Example: visual cue for due-soon */
-}
-
-
-.task-controls {
+/* Health Card */
+.health-controls {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-.edit-btn, .save-btn { /* Shared style for edit/save */
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    margin-left: 10px;
-    font-size: 0.9rem;
-    transition: background-color var(--transition-speed);
-}
-
-.edit-btn:hover, .save-btn:hover {
-    background-color: #545b62; /* Darker shade of secondary */
-}
-
-.save-btn { /* Specific style for save state if needed, e.g., different color */
-    background-color: var(--success-color);
-}
-.save-btn:hover {
-    background-color: #1e7e34; /* Darker shade of success */
-}
-
-.delete-btn {
-    background-color: var(--danger-color);
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    margin-left: 10px; /* Adjusted margin as it's now next to edit */
-    font-size: 0.9rem;
-    transition: background-color var(--transition-speed);
-}
-
-.delete-btn:hover {
-    background-color: #c82333; /* Darker shade of danger */
-}
-
-.edit-task-input {
-    flex-grow: 1;
-    padding: 6px 10px;
-    border: 1px solid var(--primary-color);
-    border-radius: var(--border-radius);
-    font-size: 1rem; /* Match task text size */
-    margin-right: 10px; /* Space before buttons */
-}
-
-li.editing {
-    background-color: #f0f0f0; /* Highlight item being edited */
-}
-
-.filter-buttons {
+.toggle-group {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    gap: 10px; /* Space between buttons */
-}
-
-.filter-btn {
-    padding: 8px 15px;
-    border: 1px solid var(--primary-color);
-    background-color: var(--light-color);
-    color: var(--primary-color);
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
-    font-size: 0.9rem;
-}
-
-.filter-btn:hover {
-    background-color: var(--primary-color);
-    color: var(--light-color);
-}
-
-.filter-btn.active {
-    background-color: var(--primary-color);
-    color: var(--light-color);
-    font-weight: 500;
-}
-
-.sort-buttons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    align-items: center;
     gap: 10px;
 }
 
-.sort-btn {
-    padding: 8px 15px;
-    border: 1px solid var(--secondary-color); /* Different color for sort buttons */
-    background-color: var(--light-color);
-    color: var(--secondary-color);
-    border-radius: var(--border-radius);
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
     cursor: pointer;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
-    font-size: 0.9rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
 }
 
-.sort-btn:hover {
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
     background-color: var(--secondary-color);
-    color: var(--light-color);
 }
 
-.sort-btn.active {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
-    font-weight: 500;
+input:checked + .slider:before {
+    transform: translateX(20px);
 }
 
-
-/* Animation for adding tasks */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.slider.round {
+    border-radius: 34px;
 }
 
-li.new-task-animation {
-    animation: fadeIn var(--transition-speed) ease-out;
+.slider.round:before {
+    border-radius: 50%;
 }
 
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        margin: 15px;
-        padding: 20px;
-    }
-
-    #taskInput, #addTaskBtn {
-        padding: 10px 12px;
-        font-size: 0.95rem;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-    }
+.water-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8rem;
 }
 
-@media (max-width: 480px) {
-    .input-group {
-        flex-direction: column;
-    }
+/* SOS Card */
+.sos-btn {
+    background-color: #e74c3c;
+    color: white;
+    width: 100%;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 4px 0 #c0392b;
+}
 
-    #taskInput, #dueDateInput, #priorityInput { /* Apply to all inputs in group */
-        border-radius: var(--border-radius);
-        margin-bottom: 10px; 
-        width: auto; 
-    }
-    /* Remove individual margin-bottom for taskInput if gap is sufficient */
-    /* #taskInput { margin-bottom: 10px; } */
+.sos-btn:active {
+    box-shadow: none;
+    transform: translateY(4px);
+}
 
-
-    #addTaskBtn {
-        border-radius: var(--border-radius);
-        width: 100%;
-    }
-
-    li {
-        padding: 10px;
-        font-size: 0.9rem;
-    }
-
-    .delete-btn {
-        padding: 6px 10px;
-        font-size: 0.8rem;
-        margin-left: 10px;
-    }
-
-    h1 {
-        font-size: 1.6rem;
-    }
+.sos-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 10px;
 }
