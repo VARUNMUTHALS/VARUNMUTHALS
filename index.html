@@ -3,36 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
+    <title>LifeLink AI</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Todo List</h1>
-        <div class="input-group">
-            <input type="text" id="taskInput" placeholder="Add a new task">
-            <input type="date" id="dueDateInput">
-            <select id="priorityInput">
-                <option value="Low">Low</option>
-                <option value="Medium" selected>Medium</option>
-                <option value="High">High</option>
-            </select>
-            <button id="addTaskBtn">Add Task</button>
+
+    <!-- Onboarding Section -->
+    <section id="onboarding-section" class="hidden">
+        <div class="onboarding-card">
+            <h1>Welcome to LifeLink AI</h1>
+            <p>Your personal AI assistant for a balanced life.</p>
+
+            <form id="onboarding-form">
+                <div class="form-group">
+                    <label for="user-name">What should we call you?</label>
+                    <input type="text" id="user-name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-age">Age</label>
+                    <input type="number" id="user-age" placeholder="25" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Your Goals</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="goal" value="Productivity"> Productivity</label>
+                        <label><input type="checkbox" name="goal" value="Health"> Health</label>
+                        <label><input type="checkbox" name="goal" value="Learning"> Learning</label>
+                        <label><input type="checkbox" name="goal" value="Mental Peace"> Mental Peace</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="primary-btn">Start My Journey</button>
+            </form>
         </div>
-        <div class="filter-buttons">
-            <button id="filterAll" class="filter-btn active">All</button>
-            <button id="filterActive" class="filter-btn">Active</button>
-            <button id="filterCompleted" class="filter-btn">Completed</button>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard-section" class="hidden">
+        <header class="dashboard-header">
+            <h1 id="greeting">Hello!</h1>
+            <p>Here is your daily overview.</p>
+        </header>
+
+        <div class="dashboard-grid">
+
+            <!-- Task Feature -->
+            <div class="card task-card">
+                <h2>Add Task</h2>
+                <div class="input-group">
+                    <input type="text" id="task-input" placeholder="e.g., Urgent meeting at 9am...">
+                    <button id="add-task-btn">Add</button>
+                </div>
+                <div id="task-list">
+                    <!-- Tasks go here -->
+                </div>
+            </div>
+
+            <!-- Mood Feature -->
+            <div class="card mood-card">
+                <h2>Mood Check-in</h2>
+                <p>How are you feeling right now?</p>
+                <div class="mood-emojis">
+                    <button class="mood-btn" data-mood="Happy">😊</button>
+                    <button class="mood-btn" data-mood="Neutral">😐</button>
+                    <button class="mood-btn" data-mood="Sad">😔</button>
+                    <button class="mood-btn" data-mood="Angry">😠</button>
+                    <button class="mood-btn" data-mood="Tired">😴</button>
+                </div>
+                <div id="mood-suggestion" class="suggestion-box hidden"></div>
+            </div>
+
+            <!-- Learning AI Feature -->
+            <div class="card learning-card">
+                <h2>Ask Learning AI</h2>
+                <textarea id="learning-input" placeholder="Ask me anything... (e.g., Why is the sky blue?)"></textarea>
+                <button id="ask-ai-btn" class="secondary-btn">Ask AI</button>
+                <div id="learning-response" class="response-box hidden"></div>
+            </div>
+
+            <!-- Health Feature -->
+            <div class="card health-card">
+                <h2>Health Reminder</h2>
+                <div class="health-controls">
+                    <div class="toggle-group">
+                        <span>Water Reminders</span>
+                        <label class="switch">
+                            <input type="checkbox" id="health-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <button id="drink-water-btn" class="water-btn">💧 I Drank Water</button>
+                </div>
+                <p id="health-status">Goal Status: Pending...</p>
+            </div>
+
+            <!-- SOS Feature -->
+            <div class="card sos-card">
+                <h2>Emergency</h2>
+                <button id="sos-btn" class="sos-btn">SOS</button>
+                <p class="sos-note">Press to send location & alert</p>
+            </div>
+
         </div>
-        <div class="sort-buttons">
-            <button id="sortByDueDateBtn" class="sort-btn">Sort by Due Date</button>
-            <button id="sortByPriorityBtn" class="sort-btn">Sort by Priority</button>
-            <button id="clearSortBtn" class="sort-btn">Default Order</button>
-        </div>
-        <ul id="taskList">
-            <!-- Tasks will be added here -->
-        </ul>
-    </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
