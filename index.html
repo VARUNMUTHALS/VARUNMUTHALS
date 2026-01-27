@@ -3,36 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
+    <title>3D Snake Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Todo List</h1>
-        <div class="input-group">
-            <input type="text" id="taskInput" placeholder="Add a new task">
-            <input type="date" id="dueDateInput">
-            <select id="priorityInput">
-                <option value="Low">Low</option>
-                <option value="Medium" selected>Medium</option>
-                <option value="High">High</option>
-            </select>
-            <button id="addTaskBtn">Add Task</button>
+    <div id="ui-overlay">
+        <div id="score-panel">
+            <div class="score-item">
+                <span class="label">Score:</span>
+                <span id="score">0</span>
+            </div>
+            <div class="score-item">
+                <span class="label">High Score:</span>
+                <span id="high-score">0</span>
+            </div>
         </div>
-        <div class="filter-buttons">
-            <button id="filterAll" class="filter-btn active">All</button>
-            <button id="filterActive" class="filter-btn">Active</button>
-            <button id="filterCompleted" class="filter-btn">Completed</button>
+        
+        <div id="start-screen" class="modal">
+            <div class="modal-content">
+                <h1>3D Snake Game</h1>
+                <p>Use Arrow Keys or WASD to move</p>
+                <p>Press Q/E to move in 3D depth</p>
+                <p>Collect red apples to grow</p>
+                <p>Don't hit walls or yourself!</p>
+                <button id="start-btn" class="btn">Start Game</button>
+            </div>
         </div>
-        <div class="sort-buttons">
-            <button id="sortByDueDateBtn" class="sort-btn">Sort by Due Date</button>
-            <button id="sortByPriorityBtn" class="sort-btn">Sort by Priority</button>
-            <button id="clearSortBtn" class="sort-btn">Default Order</button>
+        
+        <div id="game-over-screen" class="modal hidden">
+            <div class="modal-content">
+                <h1>Game Over!</h1>
+                <p>Your Score: <span id="final-score">0</span></p>
+                <p>High Score: <span id="final-high-score">0</span></p>
+                <button id="restart-btn" class="btn">Play Again</button>
+            </div>
         </div>
-        <ul id="taskList">
-            <!-- Tasks will be added here -->
-        </ul>
+        
+        <div id="pause-screen" class="modal hidden">
+            <div class="modal-content">
+                <h1>Paused</h1>
+                <p>Press SPACE to continue</p>
+            </div>
+        </div>
+        
+        <div id="controls-hint">
+            <p>Controls: Arrow Keys / WASD (Q/E for Z-axis) | Pause: SPACE</p>
+        </div>
     </div>
+    
+    <div id="game-container"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
